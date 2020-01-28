@@ -17,6 +17,10 @@ class FriendsList extends React.Component {
     this.getData();
   }
 
+  componentDidUpdate() {
+    this.getData();
+  }
+
   getData = () => {
     axiosWithAuth()
       .get("/api/friends")
@@ -31,14 +35,9 @@ class FriendsList extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state.newFriend)
+    console.log(this.state.newFriend);
     axiosWithAuth()
-      .post("/api/friends", 
-        // id: Date.now(),
-        this.state.newFriend,
-        // age: this.state.newFriend.age,
-        // email: this.state.newFriend.email
-      )
+      .post("/api/friends", this.state.newFriend)
       .then(res => console.log(res))
       .catch(err => console.log(err.message));
   };
@@ -55,8 +54,8 @@ class FriendsList extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className='friends'>
+        <form className='friend-form' onSubmit={this.handleSubmit}>
           <p>Add a New Friend</p>
           <input
             type="text"
@@ -79,7 +78,7 @@ class FriendsList extends React.Component {
             placeholder="Email"
             onChange={this.handleChanges}
           />
-          <button>Add Friend</button>
+          <button className='add-btn'>Add Friend</button>
         </form>
         {this.state.friends.map(friend => {
           return <Friend friend={friend} />;

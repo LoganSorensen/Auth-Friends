@@ -1,38 +1,128 @@
+body {
+  background-color: #1da1f2;
+}
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  display: flex;
+  justify-content: flex-end;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+a {
+  margin-right: 5%;
+  text-decoration: none;
+  font-size: 1.3rem;
+  color: white;
+  border-bottom: 2px solid #1da1f2;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+a:hover {
+  border-bottom: 2px solid white;
+}
+
+.friends {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 3%;
+}
+
+.friend-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-evenly;
+  border-radius: 20px;
+  background-color: white;
+  padding: 0 2%;
+  color: black;
+  font-weight: bold;
+  margin: 1%;
+  min-width: 10%;
+}
+
+.friend-form > input {
+  background-color: inherit;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  color: black;
+}
+
+input::placeholder {
+  color: black;
+}
+
+.friend-card {
+  padding: 1%;
+  background-color: white;
+  border-radius: 20px;
+  max-height: 200px;
+  min-width: 12%;
+  color: black;
+  margin: 1%;
+}
+
+button {
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 5%;
+  cursor: pointer;
+  font-weight: bold;
+  
+}
+
+.add-btn {
+  border: 2px solid #1da1f2;
+  color: #1da1f2;
+  background-color: inherit;
+}
+
+.add-btn:hover {
+  background-color: #1da1f2;
   color: white;
+  transition: 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.delete-btn {
+  border: 2px solid #ca2055;
+  color: #ca2055;
+  background-color: inherit;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.delete-btn:hover {
+  background-color: #ca2055;
+  color: #f0f0f0;
+  transition: 0.3s ease;
+}
+
+.login{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 5% 40%;
+  background-color: white;
+  padding: 2%;
+  border-radius: 20px;
+  height: 20vh;
+}
+
+.login > input {
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  margin: 5% 0;
+}
+
+.login-btn {
+  padding: 3%;
+  margin-top: 2%;
+}
+
+input:focus {
+  border-bottom: 2px solid black;
+  font-weight: bold;
 }
