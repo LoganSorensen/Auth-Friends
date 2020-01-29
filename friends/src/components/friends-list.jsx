@@ -1,10 +1,12 @@
 import React from "react";
+import Loader from "react-loader-spinner";
 
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import Friend from "./friend";
 
 class FriendsList extends React.Component {
   state = {
+    loading: false,
     friends: [],
     newFriend: {
       name: "",
@@ -17,29 +19,23 @@ class FriendsList extends React.Component {
     this.getData();
   }
 
-  componentDidUpdate() {
-    this.getData();
-  }
-
   getData = () => {
     axiosWithAuth()
       .get("/api/friends")
-      .then(
-        res =>
-          //res.data
-          this.setState({ friends: res.data })
-        // console.log(res)
-      )
+      .then(res => this.setState({ friends: res.data }))
       .catch(err => console.log(err));
+      console.log('friends', this.state.friends)
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.state.newFriend);
+    // console.log(this.state.newFriend);
     axiosWithAuth()
       .post("/api/friends", this.state.newFriend)
       .then(res => console.log(res))
       .catch(err => console.log(err.message));
+    //   this.setState({loading: true})
+      this.getData();
   };
 
   handleChanges = e => {
@@ -54,8 +50,8 @@ class FriendsList extends React.Component {
 
   render() {
     return (
-      <div className='friends'>
-        <form className='friend-form' onSubmit={this.handleSubmit}>
+      <div className="friends">
+        <form className="friend-form" onSubmit={this.handleSubmit}>
           <p>Add a New Friend</p>
           <input
             type="text"
@@ -78,11 +74,21 @@ class FriendsList extends React.Component {
             placeholder="Email"
             onChange={this.handleChanges}
           />
-          <button className='add-btn'>Add Friend</button>
+          <button className="add-btn">Add Friend</button>
         </form>
+
         {this.state.friends.map(friend => {
           return <Friend friend={friend} />;
         })}
+        {this.state.loading && (
+          <Loader
+            type="Puff"
+            color="#f0f0f0"
+            height={100}
+            width={100}
+            timeout={3000} //3 secs
+          />
+        )}
       </div>
     );
   }

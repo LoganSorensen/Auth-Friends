@@ -69,16 +69,16 @@ button {
   border: none;
   outline: none;
   border-radius: 20px;
-  padding: 5%;
+  
   cursor: pointer;
   font-weight: bold;
-  
 }
 
 .add-btn {
   border: 2px solid #1da1f2;
   color: #1da1f2;
   background-color: inherit;
+  padding: 5%;
 }
 
 .add-btn:hover {
@@ -87,10 +87,30 @@ button {
   transition: 0.3s ease;
 }
 
+.btn-cont {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.edit-btn {
+  background-color: inherit;
+  border: 2px solid #282c34;
+  width: 45%;
+  padding: 2%;
+}
+
+.edit-btn:hover {
+  background-color: #282c34;
+  color: white;
+  transition: 0.3s ease;
+}
+
 .delete-btn {
   border: 2px solid #ca2055;
   color: #ca2055;
   background-color: inherit;
+  padding: 3%;
+  width: 50%;
 }
 
 .delete-btn:hover {
@@ -99,7 +119,7 @@ button {
   transition: 0.3s ease;
 }
 
-.login{
+.login {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
